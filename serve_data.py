@@ -17,7 +17,6 @@ def main(argv):
 
     for res in socket.getaddrinfo(HOST, PORT, socket.AF_INET, socket.SOCK_STREAM, 0, socket.AI_PASSIVE):
         af, socktype, proto, canonname, sa = res
-        print >> sys.stderr, sa
         try:
             s = socket.socket(af, socktype, proto)
         except socket.error as msg:
