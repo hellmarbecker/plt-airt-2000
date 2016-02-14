@@ -20,6 +20,8 @@ dump1090 listens for incoming connections on port 30003 and will start writing c
 
 Kafka VM cluster from: https://github.com/elodina/scala-kafka.git
 
+Note: if the host is Windows, need to make sure that the files in the vagrant and checks subdirectories have Unix line endings
+
 ## Processing
 
 TODO - use Spark to get interesting aggs
