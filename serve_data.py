@@ -11,7 +11,7 @@ import sys, socket, time
 def main(argv):
 
     HOST = None
-    PORT = 30001
+    PORT = 30003
 
     f = open(argv[1], 'r') if len(argv) > 1 else sys.stdin
 
