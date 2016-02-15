@@ -52,3 +52,6 @@ ends up with the error:
 
     ERROR: client is newer than server (client API version: 1.21, server API version: 1.20)
     
+this is going to need docker-machine: 
+- see https://docs.docker.com/machine/install-machine/
+- and then upgrade docker machine according to http://hjgraca.github.io/2015/11/09/Docker-Error-client-newer-than-server/
