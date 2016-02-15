@@ -31,4 +31,24 @@ and enter:
     Environment="HTTP_PROXY=http://*******:********@proxynlwp.europe.intranet:8080/"
     Environment="HTTPS_PROXY=http://*******:********@proxynlwp.europe.intranet:8080/"
 
+Flush changes:
 
+    sudo systemctl daemon-reload
+
+Verify that the configuration has been loaded:
+
+    sudo systemctl show docker --property Environment
+
+Restart Docker:
+
+    sudo systemctl restart docker
+
+then continue with http://wurstmeister.github.io/kafka-docker/:
+
+    cd /root/wurstmeister-kafka-docker-e03b1d6
+    docker-compose up
+    
+ends up with the error:
+
+    ERROR: client is newer than server (client API version: 1.21, server API version: 1.20)
+    
