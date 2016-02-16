@@ -18,9 +18,11 @@ dump1090 listens for incoming connections on port 30003 and will start writing c
 
 ## Data transfer
 
-Kafka VM cluster from: https://github.com/elodina/scala-kafka.git
+1.  Kafka VM cluster from: https://github.com/elodina/scala-kafka.git
 
-Note: if the host is Windows, need to make sure that the files in the vagrant and checks subdirectories have Unix line endings
+    Note: if the host is Windows, need to make sure that the files in the vagrant and checks subdirectories have Unix line endings!
+
+2.  Install Docker based Kafka cluster on a single Linux VM. See linux-install-notes.md
 
 ## Processing
 
