@@ -20,6 +20,9 @@ Install docker-compose as a container, according to https://docs.docker.com/comp
 
 Download kafka docker package from http://wurstmeister.github.io/kafka-docker/, and untar it in root's home directory
 
+    cd
+    tar xfz wurstmeister-kafka-docker-0.9.0.0-6-ge03b1d6.tar.gz
+
 Need to configure the proxy in Docker according to  http://stackoverflow.com/questions/23111631/cannot-download-docker-images-behind-a-proxy
 
     mkdir /etc/systemd/system/docker.service.d
@@ -52,6 +55,13 @@ ends up with the error:
 
     ERROR: client is newer than server (client API version: 1.21, server API version: 1.20)
     
-this is going to need docker-machine: 
-- see https://docs.docker.com/machine/install-machine/
-- and then upgrade docker machine according to http://hjgraca.github.io/2015/11/09/Docker-Error-client-newer-than-server/
+This is going to need docker-machine. Install it according to https://docs.docker.com/machine/install-machine/
+
+    $ curl -L https://github.com/docker/machine/releases/download/v0.6.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && \
+    chmod +x /usr/local/bin/docker-machine
+    $ docker-machine version
+    docker-machine version 0.6.0, build e27fb87
+    
+and then upgrade docker machine according to http://hjgraca.github.io/2015/11/09/Docker-Error-client-newer-than-server/
+
+or, that was the plan. Problem is, I have no "default" machine and nothing to upgrade!
