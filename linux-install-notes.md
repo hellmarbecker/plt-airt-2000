@@ -131,6 +131,42 @@ _TODO_: let's check if the proxy settings in Dockerfile and docker-compose.yml a
 
 But first another problem: the alpine update works now but the kafka container still spews
 
+    Step 13 : CMD start-kafka.sh
+     ---> Running in 0f50d46f46b3
+     ---> aa6aa0b3bc5f
+    Removing intermediate container 0f50d46f46b3
+    Successfully built aa6aa0b3bc5f
+    Creating wurstmeisterkafkadockere03b1d6_kafka_1
+    Attaching to wurstmeisterkafkadockere03b1d6_zookeeper_1, wurstmeisterkafkadockere03b1d6_kafka_1
+    zookeeper_1 | JMX enabled by default
+    zookeeper_1 | Using config: /opt/zookeeper-3.4.6/bin/../conf/zoo.cfg
+    zookeeper_1 | 2016-02-18 19:34:50,944 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /opt/zookeeper-3.4.6/bin/../conf/zoo.cfg
+    zookeeper_1 | 2016-02-18 19:34:50,950 [myid:] - INFO  [main:DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3
+    zookeeper_1 | 2016-02-18 19:34:50,950 [myid:] - INFO  [main:DatadirCleanupManager@79] - autopurge.purgeInterval set to 1
+    zookeeper_1 | 2016-02-18 19:34:50,951 [myid:] - WARN  [main:QuorumPeerMain@113] - Either no config or no quorum defined in config, running  in standalone mode
+    zookeeper_1 | 2016-02-18 19:34:50,951 [myid:] - INFO  [PurgeTask:DatadirCleanupManager$PurgeTask@138] - Purge task started.
+    zookeeper_1 | 2016-02-18 19:34:50,961 [myid:] - INFO  [PurgeTask:DatadirCleanupManager$PurgeTask@144] - Purge task completed.
+    zookeeper_1 | 2016-02-18 19:34:50,966 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /opt/zookeeper-3.4.6/bin/../conf/zoo.cfg
+    zookeeper_1 | 2016-02-18 19:34:50,966 [myid:] - INFO  [main:ZooKeeperServerMain@95] - Starting server
+    zookeeper_1 | 2016-02-18 19:34:50,976 [myid:] - INFO  [main:Environment@100] - Server environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:host.name=0577e57cef73
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:java.version=1.7.0_65
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:java.vendor=Oracle Corporation
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:java.home=/usr/lib/jvm/java-7-openjdk-amd64/jre
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:java.class.path=/opt/zookeeper-3.4.6/bin/../build/classes:/opt/zookeeper-3.4.6/bin/../build/lib/*.jar:/opt/zookeeper-3.4.6/bin/../lib/slf4j-log4j12-1.6.1.jar:/opt/zookeeper-3.4.6/bin/../lib/slf4j-api-1.6.1.jar:/opt/zookeeper-3.4.6/bin/../lib/netty-3.7.0.Final.jar:/opt/zookeeper-3.4.6/bin/../lib/log4j-1.2.16.jar:/opt/zookeeper-3.4.6/bin/../lib/jline-0.9.94.jar:/opt/zookeeper-3.4.6/bin/../zookeeper-3.4.6.jar:/opt/zookeeper-3.4.6/bin/../src/java/lib/*.jar:/opt/zookeeper-3.4.6/bin/../conf:
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+    zookeeper_1 | 2016-02-18 19:34:50,977 [myid:] - INFO  [main:Environment@100] - Server environment:java.io.tmpdir=/tmp
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:java.compiler=<NA>
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:os.name=Linux
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:os.arch=amd64
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:os.version=3.10.0-327.4.5.el7.x86_64
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:user.name=root
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:user.home=/root
+    zookeeper_1 | 2016-02-18 19:34:50,980 [myid:] - INFO  [main:Environment@100] - Server environment:user.dir=/opt/zookeeper-3.4.6
+    zookeeper_1 | 2016-02-18 19:34:50,981 [myid:] - INFO  [main:ZooKeeperServer@755] - tickTime set to 2000
+    zookeeper_1 | 2016-02-18 19:34:50,981 [myid:] - INFO  [main:ZooKeeperServer@764] - minSessionTimeout set to -1
+    zookeeper_1 | 2016-02-18 19:34:50,981 [myid:] - INFO  [main:ZooKeeperServer@773] - maxSessionTimeout set to -1
+    zookeeper_1 | 2016-02-18 19:34:50,996 [myid:] - INFO  [main:NIOServerCnxnFactory@94] - binding to port 0.0.0.0/0.0.0.0:2181
     kafka_1     | Error response from daemon: client is newer than server (client API version: 1.21, server API version: 1.20)
     kafka_1     | waiting for kafka to be ready
     kafka_1     | [2016-02-18 19:37:35,951] FATAL  (kafka.Kafka$)
