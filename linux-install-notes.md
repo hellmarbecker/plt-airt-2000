@@ -124,3 +124,24 @@ could be a proxy issue. Edit Dockerfile to include:
     ENV https_proxy "http://*******:********@proxynlwp.europe.intranet:8080/"
 
 same error!
+
+"Restarting the docker service on the host seems to have fixed the issue." -> https://github.com/gliderlabs/docker-alpine/issues/75
+
+_TODO_: let's check if the proxy settings in Dockerfile and docker-compose.yml are really needed.
+
+But first another problem: the alpine update works now but the kafka container still spews
+
+    kafka_1     | Error response from daemon: client is newer than server (client API version: 1.21, server API version: 1.20)
+    kafka_1     | waiting for kafka to be ready
+    kafka_1     | [2016-02-18 19:37:35,951] FATAL  (kafka.Kafka$)
+    kafka_1     | org.apache.kafka.common.config.ConfigException: Invalid value  for configuration advertised.port: Not a number of type INT
+    kafka_1     |   at org.apache.kafka.common.config.ConfigDef.parseType(ConfigDef.java:253)
+    kafka_1     |   at org.apache.kafka.common.config.ConfigDef.parse(ConfigDef.java:145)
+    kafka_1     |   at org.apache.kafka.common.config.AbstractConfig.<init>(AbstractConfig.java:49)
+    kafka_1     |   at org.apache.kafka.common.config.AbstractConfig.<init>(AbstractConfig.java:56)
+    kafka_1     |   at kafka.server.KafkaConfig.<init>(KafkaConfig.scala:702)
+    kafka_1     |   at kafka.server.KafkaConfig$.fromProps(KafkaConfig.scala:691)
+    kafka_1     |   at kafka.server.KafkaServerStartable$.fromProps(KafkaServerStartable.scala:28)
+    kafka_1     |   at kafka.Kafka$.main(Kafka.scala:58)
+    kafka_1     |   at kafka.Kafka.main(Kafka.scala)
+    wurstmeisterkafkadockere03b1d6_kafka_1 exited with code 1
