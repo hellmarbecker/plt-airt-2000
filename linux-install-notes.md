@@ -65,3 +65,9 @@ This is going to need docker-machine. Install it according to https://docs.docke
 and then upgrade docker machine according to http://hjgraca.github.io/2015/11/09/Docker-Error-client-newer-than-server/
 
 or, that was the plan. Problem is, I have no "default" machine and nothing to upgrade!
+
+Solution approach: Downgrade docker-compose
+
+    rm /usr/local/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
