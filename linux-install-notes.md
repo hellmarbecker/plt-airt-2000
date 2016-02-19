@@ -200,3 +200,13 @@ Then connect to the box in another window like such
     $ docker exec -i -t sad_darwin bash
     root@ba67dc1d0ae7:/#
 
+On the main host, download and install kafka:
+
+    wget http://mirrors.supportex.net/apache/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz
+    tar xfz kafka_2.11-0.8.2.1.tgz
+    cd kafka_2.11-0.8.2.1/bin
+        
+    ./kafka-topics.sh --create --zookeeper 10.44.129.105:2181 --replication-factor 1 --partitions 1 --topic PLT-AIRT
+    ./kafka-topics.sh --describe --zookeeper 10.44.129.105:2181  --topic PLT-AIRT # check topic
+    ./kafka-console-producer.sh --broker-list 10.44.129.105:9092 --topic PLT-AIRT # write to topic
+    
