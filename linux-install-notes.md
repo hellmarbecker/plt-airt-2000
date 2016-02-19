@@ -187,3 +187,16 @@ But first another problem: the alpine update works now but the kafka container s
 Try a new image from Spotify https://github.com/spotify/docker-kafka
 
     docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`docker-machine ip \`docker-machine active\`` --env ADVERTISED_PORT=9092 spotify/kafka
+    
+make this:
+
+    docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=10.44.129.105 --env ADVERTISED_PORT=9092 spotify/kafka
+    
+Then connect to the box in another window like such
+
+    $ docker ps
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                                            NAMES
+    ba67dc1d0ae7        spotify/kafka       "supervisord -n"    27 seconds ago      Up 26 seconds       0.0.0.0:2181->2181/tcp, 0.0.0.0:9092->9092/tcp   sad_darwin
+    $ docker exec -i -t sad_darwin bash
+    root@ba67dc1d0ae7:/#
+
