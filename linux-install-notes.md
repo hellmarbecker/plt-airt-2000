@@ -210,3 +210,4 @@ On the main host, download and install kafka:
     ./kafka-topics.sh --describe --zookeeper 10.44.129.105:2181  --topic PLT-AIRT # check topic
     ./kafka-console-producer.sh --broker-list 10.44.129.105:9092 --topic PLT-AIRT # write to topic
     
+Note that the topic create command gives a warning on Kafka 0.8.2.1, see http://users.kafka.apache.narkive.com/PFbfIGcY/quickstart-ok-locally-but-getting-warn-property-topic-is-not-valid-and-leadernotavailableexception
