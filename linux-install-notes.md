@@ -1,4 +1,4 @@
-# 2016-02-15
+## 2016-02-15
 
 Installed Vagrant:
 
@@ -181,3 +181,9 @@ But first another problem: the alpine update works now but the kafka container s
     kafka_1     |   at kafka.Kafka$.main(Kafka.scala:58)
     kafka_1     |   at kafka.Kafka.main(Kafka.scala)
     wurstmeisterkafkadockere03b1d6_kafka_1 exited with code 1
+
+## 2016-02-19
+
+Try a new image from Spotify https://github.com/spotify/docker-kafka
+
+    docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`docker-machine ip \`docker-machine active\`` --env ADVERTISED_PORT=9092 spotify/kafka
