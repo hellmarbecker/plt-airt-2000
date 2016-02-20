@@ -214,7 +214,11 @@ Note that the topic create command gives a warning on Kafka 0.8.2.1, see http://
 
 Next approach - install docker-machine (as part of Docker toolbox) on Windows. Then:
 
-    $ docker run -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`docker-machine ip \`docker-machine active\`` --env ADVERTISED_PORT=9092 spotify/kafka
+    $ docker run -d -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`docker-machine ip \`docker-machine active\`` --env ADVERTISED_PORT=9092 spotify/kafka
     
 and it brings up kafka inside the docker VM.
+
+Run Hadoop container:
+
+    $ docker run -it -d sequenceiq/hadoop-docker:2.7.0 /etc/bootstrap.sh -bash
 
