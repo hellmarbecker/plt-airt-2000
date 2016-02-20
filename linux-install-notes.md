@@ -220,7 +220,12 @@ and it brings up kafka inside the docker VM.
 
 ## 2016-02-20
 
+In VirtualBox GUI, edit the docker machine's properties to give it 2 CPU cores and 4 GB of RAM. Start up Kafka container as above.
+
 Run Hadoop container:
 
     $ docker run -it -d sequenceiq/hadoop-docker:2.7.0 /etc/bootstrap.sh -bash
 
+Run Spark container:
+
+    $ docker run -it -p 8088:8088 -p 8042:8042 -h `docker-machine ip \`docker-machine active\`` sequenceiq/spark:1.6.0 bash
