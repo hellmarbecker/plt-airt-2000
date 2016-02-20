@@ -218,6 +218,8 @@ Next approach - install docker-machine (as part of Docker toolbox) on Windows. T
     
 and it brings up kafka inside the docker VM.
 
+## 2016-02-20
+
 Run Hadoop container:
 
     $ docker run -it -d sequenceiq/hadoop-docker:2.7.0 /etc/bootstrap.sh -bash
