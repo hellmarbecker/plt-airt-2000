@@ -24,6 +24,12 @@ dump1090 listens for incoming connections on port 30003 and will start writing c
 
 2.  Install Docker based Kafka cluster on a single Linux VM. See linux-install-notes.md
 
+## Data transfer, alternative approach
+
+1. NiFi single machine "cluster" to move data in
+
+2. MiNiFi on the Raspi
+
 ## Processing
 
 TODO - use Spark to get interesting aggs
