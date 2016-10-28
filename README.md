@@ -16,6 +16,10 @@ Data exchange via WiFi dongle.
 
 dump1090 listens for incoming connections on port 30003 and will start writing comma separated records when a client connects. This repo also contains a small simulator that can replay a previously collected data file, servicing port 30003 as well.
 
+### Simulator
+
+A simulator script (serve_data.py) can listen on port 30003 and replay previously collected data.
+
 ## Data transfer
 
 1.  Kafka VM cluster from: https://github.com/elodina/scala-kafka.git
