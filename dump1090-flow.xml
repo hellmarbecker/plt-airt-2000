@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+<template encoding-version="1.0">
+  <description></description>
+  <groupId>7c84501d-d10c-407c-b9f3-1d80e38fe36a</groupId>
+  <name>dump1090-flow</name>
+  <snippet>
+    <connections>
+      <id>01214322-0158-1000-0000-000000000000</id>
+      <parentGroupId>7c84501d-d10c-407c-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>fb7461be-0157-1000-0000-000000000000</groupId>
+        <id>fb70a50f-0157-1000-0000-0000466541be</id>
+        <type>REMOTE_INPUT_PORT</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>success</selectedRelationships>
+      <source>
+        <groupId>7c84501d-d10c-407c-0000-000000000000</groupId>
+        <id>012126f3-0158-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <processors>
+      <id>012126f3-0158-1000-0000-000000000000</id>
+      <parentGroupId>7c84501d-d10c-407c-0000-000000000000</parentGroupId>
+      <position>
+        <x>0.0</x>
+        <y>12.596549911420482</y>
+      </position>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments></comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Local Network Interface</key>
+            <value>
+              <name>Local Network Interface</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Port</key>
+            <value>
+              <name>Port</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Receive Buffer Size</key>
+            <value>
+              <name>Receive Buffer Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Max Size of Message Queue</key>
+            <value>
+              <name>Max Size of Message Queue</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Max Size of Socket Buffer</key>
+            <value>
+              <name>Max Size of Socket Buffer</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Character Set</key>
+            <value>
+              <name>Character Set</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Max Batch Size</key>
+            <value>
+              <name>Max Batch Size</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Message Delimiter</key>
+            <value>
+              <name>Message Delimiter</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Max Number of TCP Connections</key>
+            <value>
+              <name>Max Number of TCP Connections</name>
+            </value>
+          </entry>
+          <entry>
+            <key>SSL Context Service</key>
+            <value>
+              <identifiesControllerService>org.apache.nifi.ssl.SSLContextService</identifiesControllerService>
+              <name>SSL Context Service</name>
+            </value>
+          </entry>
+          <entry>
+            <key>Client Auth</key>
+            <value>
+              <name>Client Auth</name>
+            </value>
+          </entry>
+        </descriptors>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Local Network Interface</key>
+          </entry>
+          <entry>
+            <key>Port</key>
+            <value>4711</value>
+          </entry>
+          <entry>
+            <key>Receive Buffer Size</key>
+            <value>65507 B</value>
+          </entry>
+          <entry>
+            <key>Max Size of Message Queue</key>
+            <value>10000</value>
+          </entry>
+          <entry>
+            <key>Max Size of Socket Buffer</key>
+            <value>1 MB</value>
+          </entry>
+          <entry>
+            <key>Character Set</key>
+            <value>UTF-8</value>
+          </entry>
+          <entry>
+            <key>Max Batch Size</key>
+            <value>1</value>
+          </entry>
+          <entry>
+            <key>Message Delimiter</key>
+            <value>\n</value>
+          </entry>
+          <entry>
+            <key>Max Number of TCP Connections</key>
+            <value>2</value>
+          </entry>
+          <entry>
+            <key>SSL Context Service</key>
+          </entry>
+          <entry>
+            <key>Client Auth</key>
+            <value>REQUIRED</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>ListenTCP</name>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.ListenTCP</type>
+    </processors>
+    <remoteProcessGroups>
+      <id>fb7461be-0157-1000-0000-000000000000</id>
+      <parentGroupId>7c84501d-d10c-407c-0000-000000000000</parentGroupId>
+      <position>
+        <x>627.757216151593</x>
+        <y>0.0</y>
+      </position>
+      <comments></comments>
+      <communicationsTimeout>30 sec</communicationsTimeout>
+      <contents>
+        <inputPorts>
+          <comments></comments>
+          <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+          <connected>true</connected>
+          <exists>true</exists>
+          <id>fb70a50f-0157-1000-0000-0000466541be</id>
+          <name>From MiNiFi</name>
+          <targetRunning>true</targetRunning>
+          <transmitting>false</transmitting>
+          <useCompression>false</useCompression>
+        </inputPorts>
+      </contents>
+      <proxyHost></proxyHost>
+      <proxyUser></proxyUser>
+      <targetUri>http://*****.amazonaws.com:9090/nifi</targetUri>
+      <transportProtocol>RAW</transportProtocol>
+      <yieldDuration>10 sec</yieldDuration>
+    </remoteProcessGroups>
+  </snippet>
+  <timestamp>10/26/2016 13:16:26 UTC</timestamp>
+</template>
