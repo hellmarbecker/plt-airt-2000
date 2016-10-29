@@ -1,0 +1,29 @@
+{
+  "namespace" : "SBS1.avro",
+  "type" : "record",
+  "name" : "BaseStation",
+  "fields" : [
+     {"name" : "MT",   "type" : ["string", "null"]},
+     {"name" : "TT",   "type" : ["string", "null"]},
+     {"name" : "SID",  "type" : ["string", "null"]},
+     {"name" : "AID",  "type" : ["string", "null"]},
+     {"name" : "Hex",  "type" : ["string", "null"]},
+     {"name" : "FID",  "type" : ["string", "null"]},
+     {"name" : "DMG",  "type" : ["string", "null"]},
+     {"name" : "TMG",  "type" : ["string", "null"]},
+     {"name" : "DML",  "type" : ["string", "null"]},
+     {"name" : "TML",  "type" : ["string", "null"]},
+     {"name" : "CS",   "type" : ["string", "null"]},
+     {"name" : "Alt",  "type" : ["string", "null"]},
+     {"name" : "GS",   "type" : ["string", "null"]},
+     {"name" : "Trk",  "type" : ["string", "null"]},
+     {"name" : "Lat",  "type" : ["string", "null"]},
+     {"name" : "Lng",  "type" : ["string", "null"]},
+     {"name" : "VR",   "type" : ["string", "null"]},
+     {"name" : "Sq",   "type" : ["string", "null"]},
+     {"name" : "Alrt", "type" : ["string", "null"]},
+     {"name" : "Emer", "type" : ["string", "null"]},
+     {"name" : "SPI",  "type" : ["string", "null"]},
+     {"name" : "Gnd",  "type" : ["string", "null"]}
+ ]
+}
