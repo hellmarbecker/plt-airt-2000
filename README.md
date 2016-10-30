@@ -12,6 +12,12 @@ There are also a lot better antenna setups, but this one gives up to 200 km rang
 
 Data exchange via WiFi dongle.
 
+## Raspi setup notes
+
+- Default setup for rsyslogd will try to write to console and fail, writing lots of messages to /var/log/messages. To fix this, see here: https://blog.dantup.com/2016/04/removing-rsyslog-spam-on-raspberry-pi-raspbian-jessie/
+
+- In /etc/ssh/sshd_config, set `PermitRootLogin no`.
+
 ## Data sourcing
 
 dump1090 listens for incoming connections on port 30003 and will start writing comma separated records when a client connects. 
