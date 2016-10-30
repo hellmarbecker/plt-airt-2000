@@ -43,11 +43,19 @@ This repo also contains a small simulator (serve_data.py) that can replay a prev
 Setup based on the excellent article by Andrew Psaltis:
 https://community.hortonworks.com/articles/56341/getting-started-with-minifi.html
 
+### MiNiFi side (Raspi)
+
 Using the TCP Listen processor on MiNiFi. Since dump1090 is listening (acting as a server) itself, connect the ends like this:
 
 ```
 nc localhost 30003 | nc localhost 4711
 ```
+
+### NiFi side (HDF 2.0 on AWS) 
+
+Parse and process the data by using first ConvertCSVToAvro and then ConvertAvroToJSON. Avro schema is in the repo, for explanation and example see:
+
+https://avro.apache.org/docs/1.8.0/gettingstartedjava.html#Compiling+the+schema
 
 ## Processing
 
