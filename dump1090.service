@@ -1,0 +1,11 @@
+[Unit]
+Description=ADS-B receiver process
+
+[Service]
+User=pi
+ExecStart=/home/pi/dump1090/dump1090 --net --quiet
+RestartSec=30
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
