@@ -1,0 +1,11 @@
+[Unit]
+Description=connector
+
+[Service]
+User=pi
+ExecStart=/home/pi/minifi-1090/connect.sh
+RestartSec=30
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
