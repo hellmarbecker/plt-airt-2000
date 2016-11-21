@@ -18,11 +18,11 @@ Data exchange via WiFi dongle.
 
 - In /etc/ssh/sshd_config, set `PermitRootLogin no`.
 
+- Adding systemd service definition files for dump1090, Minifi, connect.sh.
+
 ## Data sourcing
 
 dump1090 listens for incoming connections on port 30003 and will start writing comma separated records when a client connects. 
-
-For now, using connect.sh script to transfer data from 30003 to a listening port (ListenTCP processor) on MiNiFi.
 
 ### Simulator
 
@@ -52,6 +52,7 @@ Using the TCP Listen processor on MiNiFi. Since dump1090 is listening (acting as
 ```
 nc localhost 30003 | nc localhost 4711
 ```
+For now, using connect.sh script to transfer data from 30003 to a listening port (ListenTCP processor) on MiNiFi.
 
 ### NiFi side (HDF 2.0 on AWS) 
 
