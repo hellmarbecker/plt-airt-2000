@@ -22,6 +22,8 @@ Data exchange via WiFi dongle.
 
 dump1090 listens for incoming connections on port 30003 and will start writing comma separated records when a client connects. 
 
+For now, using connect.sh script to transfer data from 30003 to a listening port (ListenTCP processor) on MiNiFi.
+
 ### Simulator
 
 This repo also contains a small simulator (serve_data.py) that can replay a previously collected data file, servicing port 30003 as well.
@@ -53,9 +55,11 @@ nc localhost 30003 | nc localhost 4711
 
 ### NiFi side (HDF 2.0 on AWS) 
 
-Parse and process the data by using first ConvertCSVToAvro and then ConvertAvroToJSON. Avro schema is in the repo, for explanation and example see:
+1. Parse and process the data by using first ConvertCSVToAvro and then ConvertAvroToJSON. Avro schema is in the repo, for explanation and example see:
 
-https://avro.apache.org/docs/1.8.0/gettingstartedjava.html#Compiling+the+schema
+   https://avro.apache.org/docs/1.8.0/gettingstartedjava.html#Compiling+the+schema
+   
+2. Merge data together into ORC files by cascading two MergeContent processors. Note that with just one processor, NiFi will consume excessive heap space and crash.
 
 ## Processing
 
