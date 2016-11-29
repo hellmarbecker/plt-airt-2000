@@ -20,6 +20,15 @@ Data exchange via WiFi dongle.
 
 - Adding systemd service definition files for dump1090, Minifi, connect.sh.
 
+- Disable WiFi power saving by editing /etc/network/interfaces and adding a line to `wlan0` configuration like so:
+
+```
+allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+wireless-power off
+```
+
 ## Data sourcing
 
 dump1090 listens for incoming connections on port 30003 and will start writing comma separated records when a client connects. 
