@@ -14,11 +14,11 @@ Data exchange via WiFi dongle.
 
 ## Raspi setup notes
 
-- Default setup for rsyslogd will try to write to console and fail, writing lots of messages to /var/log/messages. To fix this, see here: https://blog.dantup.com/2016/04/removing-rsyslog-spam-on-raspberry-pi-raspbian-jessie/
+- For headless setup, check https://www.raspberrypi.org/forums/viewtopic.php?t=74176.
+
+- Default setup for rsyslogd will try to write to console and fail, writing lots of messages to /var/log/messages. To fix this, see here: https://blog.dantup.com/2016/04/removing-rsyslog-spam-on-raspberry-pi-raspbian-jessie/.
 
 - In /etc/ssh/sshd_config, set `PermitRootLogin no`.
-
-- Adding systemd service definition files for dump1090, Minifi, connect.sh.
 
 - Disable WiFi power saving by editing /etc/network/interfaces and adding a line to `wlan0` configuration like so:
 
@@ -28,6 +28,8 @@ iface wlan0 inet manual
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 wireless-power off
 ```
+
+- Adding systemd service definition files for dump1090, Minifi, connect.sh (TBD)
 
 ## Data sourcing
 
