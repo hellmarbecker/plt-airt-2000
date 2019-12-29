@@ -1,0 +1,64 @@
+CREATE STREAM adsb_raw (
+    mt      VARCHAR,
+    tt      VARCHAR,
+    sid     VARCHAR,
+    aid     VARCHAR,
+    hex     VARCHAR,
+    fid     VARCHAR,
+    dmg     VARCHAR,
+    tmg     VARCHAR,
+    dml     VARCHAR,
+    tml     VARCHAR,
+    cs      VARCHAR,
+    alt     VARCHAR,
+    gs      VARCHAR,
+    trk     VARCHAR,
+    lat     VARCHAR,
+    lng     VARCHAR,
+    vr      VARCHAR,
+    sq      VARCHAR,
+    alrt    VARCHAR,
+    emer    VARCHAR,
+    spi     VARCHAR,
+    gnd     VARCHAR
+)
+WITH (
+    KAFKA_TOPIC='adsb-raw',
+    VALUE_FORMAT='DELIMITED'
+);
+
+CREATE STREAM adsb_keyed
+WITH (
+    TIMESTAMP='ts_generated',
+    TIMESTAMP_FORMAT='yyyy/MM/dd HH:mm:ss.SSS',
+    VALUE_FORMAT='AVRO'
+) 
+AS 
+SELECT
+    mt,
+    tt,
+    sid,
+    aid,
+    hex,
+    fid,
+    CONCAT(CONCAT(dmg, ' '), tmg) AS ts_generated,
+    CONCAT(CONCAT(dml, ' '), tml) AS ts_logged,
+    cs,
+    alt,
+    gs,
+    trk,
+    lat,
+    lng,
+    vr,
+    sq,
+    alrt,
+    emer,
+    spi,
+    gnd
+FROM
+    adsb_raw
+EMIT CHANGES
+PARTITION BY
+    hex;
+
+  
