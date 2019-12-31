@@ -76,9 +76,9 @@ PARTITION BY
 --
 create table adsb_counts_5sec as
 select
-    windowstart(),
+    windowstart() AS ts_windowstart,
     hex,
-    count(*)
+    count(*) AS num_records
 from
     adsb_keyed
 window tumbling ( size 5 seconds )
