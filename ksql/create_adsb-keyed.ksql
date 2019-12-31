@@ -1,3 +1,6 @@
+--
+-- CSV based stream on top of raw topic
+--
 CREATE STREAM adsb_raw (
     mt      VARCHAR,
     tt      VARCHAR,
@@ -27,6 +30,12 @@ WITH (
     VALUE_FORMAT='DELIMITED'
 );
 
+--
+-- Apply SBS1 schema
+-- Use HEX field as key
+-- Use generation time as timestamp field for purposes of KSQL
+-- Transform to AVRO
+--
 CREATE STREAM adsb_keyed
 WITH (
     TIMESTAMP='ts_generated',
@@ -61,4 +70,18 @@ EMIT CHANGES
 PARTITION BY
     hex;
 
-  
+--
+-- Example 1:
+-- Count number of data points per flight in a 5 second tumbling window
+--
+create table adsb_counts_5sec as
+select
+    windowstart(),
+    hex,
+    count(*)
+from
+    adsb_keyed
+window tumbling ( size 5 seconds )
+group by
+    hex
+emit changes;
