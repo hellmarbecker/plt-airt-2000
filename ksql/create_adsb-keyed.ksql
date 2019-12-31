@@ -1,29 +1,29 @@
 --
 -- CSV based stream on top of raw topic
 --
-CREATE STREAM adsb_raw (
-    mt      VARCHAR,
-    tt      VARCHAR,
-    sid     VARCHAR,
-    aid     VARCHAR,
-    hex     VARCHAR,
-    fid     VARCHAR,
-    dmg     VARCHAR,
-    tmg     VARCHAR,
-    dml     VARCHAR,
-    tml     VARCHAR,
-    cs      VARCHAR,
-    alt     VARCHAR,
-    gs      VARCHAR,
-    trk     VARCHAR,
-    lat     VARCHAR,
-    lng     VARCHAR,
-    vr      VARCHAR,
-    sq      VARCHAR,
-    alrt    VARCHAR,
-    emer    VARCHAR,
-    spi     VARCHAR,
-    gnd     VARCHAR
+CREATE STREAM adsb_raw (                            
+    message_type            VARCHAR,
+    transmission_type       INTEGER,
+    session_id              INTEGER,
+    aircraft_id             INTEGER,
+    hex_ident               VARCHAR,
+    flight_id               INTEGER,
+    date_message_generated  VARCHAR,
+    time_message_generated  VARCHAR,
+    date_message_logged     VARCHAR,
+    time_message_logged     VARCHAR,
+    callsign                VARCHAR,
+    altitude                INTEGER,
+    ground_speed            INTEGER,
+    track                   INTEGER,
+    latitude                DOUBLE,
+    longitude               DOUBLE,
+    vertical_rate           INTEGER,
+    squawk                  VARCHAR,
+    alert                   INTEGER,
+    emergency               INTEGER,
+    spi                     INTEGER,
+    is_on_ground            INTEGER
 )
 WITH (
     KAFKA_TOPIC='adsb-raw',
@@ -44,44 +44,50 @@ WITH (
 ) 
 AS 
 SELECT
-    mt,
-    tt,
-    sid,
-    aid,
-    hex,
-    fid,
-    dmg + ' ' + tmg AS ts_generated,
-    dml + ' ' + tml AS ts_logged,
-    cs,
-    alt,
-    gs,
-    trk,
-    lat,
-    lng,
-    vr,
-    sq,
-    alrt,
-    emer,
+    message_type,
+    transmission_type,
+    session_id,
+    aircraft_id,
+    hex_ident,
+    flight_id,
+    date_message_generated + ' ' + time_message_generated AS ts_generated,
+    date_message_logged + ' ' + time_message_logged AS ts_logged,
+    callsign,
+    altitude,
+    ground_speed,
+    track,
+    latitude,
+    longitude,
+    vertical_rate,
+    squawk,
+    alert,
+    emergency,
     spi,
-    gnd
+    is_on_ground
 FROM
     adsb_raw
 EMIT CHANGES
 PARTITION BY
-    hex;
+    hex_ident;
 
 --
 -- Example 1:
--- Count number of data points per flight in a 5 second tumbling window
+-- Count number of data points per 5 second tumbling window
 --
-create table adsb_counts_5sec as
-select
-    windowstart() AS ts_windowstart,
-    hex,
+CREATE STREAM adsb_keyed_with_dummy AS
+SELECT
+    1 AS dummy,
+    *
+FROM adsb_keyed
+EMIT CHANGES;
+
+CREATE TABLE adsb_counts_5sec AS
+SELECT
+    TIMESTAMPTOSTRING(windowstart(), 'yyyy-MM-dd HH:mm:ss.SSS') AS ts_windowstart,
     count(*) AS num_records
-from
-    adsb_keyed
+FROM
+    adsb_keyed_with_dummy
 window tumbling ( size 5 seconds )
 group by
-    hex
+    dummy
 emit changes;
