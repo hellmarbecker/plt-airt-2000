@@ -2,7 +2,7 @@
 
 Like this:
 
-  nc localhost 30003 | ./producer adsb-raw ~/.ccloud/example.config
+    nc localhost 30003 | ./producer adsb-raw ~/.ccloud/example.config
 
 # Overview
 
