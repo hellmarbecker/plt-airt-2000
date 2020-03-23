@@ -1,6 +1,17 @@
 # Invocation
 
-Like this:
+Create Confluent Cloud configuration file in ~/.ccloud with the information from Confluent Cloud, like so:
+
+    bootstrap.servers=pkc-4ygn6.europe-west3.gcp.confluent.cloud:9092
+    api.version.request=true
+    broker.version.fallback=0.10.0.0
+    api.version.fallback.ms=0
+    sasl.mechanism=PLAIN
+    security.protocol=SASL_SSL
+    sasl.username=<API key>
+    sasl.password=<API secret>
+
+Call and pipe ADS-B data:
 
     nc localhost 30003 | ./producer adsb-raw ~/.ccloud/example.config
 
