@@ -1,3 +1,9 @@
+# Invocation
+
+Like this:
+
+  nc localhost 30003 | ./producer adsb-raw ~/.ccloud/example.config
+
 # Overview
 
 Produce messages to and consume messages from [Confluent Cloud](https://www.confluent.io/confluent-cloud/?utm_source=github&utm_medium=demo&utm_campaign=ch.examples_type.community_content.clients-ccloud) using the C client [librdkafka](https://github.com/edenhill/librdkafka).
