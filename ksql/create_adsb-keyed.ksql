@@ -40,7 +40,7 @@ CREATE STREAM adsb_keyed
 WITH (
     TIMESTAMP='ts_generated',
     TIMESTAMP_FORMAT='yyyy/MM/dd HH:mm:ss.SSS',
-    VALUE_FORMAT='AVRO'
+    VALUE_FORMAT='JSON'
 ) 
 AS 
 SELECT
@@ -66,9 +66,9 @@ SELECT
     is_on_ground
 FROM
     adsb_raw
-EMIT CHANGES
 PARTITION BY
-    hex_ident;
+    hex_ident
+EMIT CHANGES;
 
 --
 -- Example 1:
