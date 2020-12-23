@@ -71,6 +71,33 @@ PARTITION BY
 EMIT CHANGES;
 
 --
+-- Example: Enrich data with fields from previous rows
+--
+CREATE TABLE adsb_assembled
+WITH (
+    TIMESTAMP='ts',
+    TIMESTAMP_FORMAT='yyyy/MM/dd HH:mm:ss.SSS',
+    VALUE_FORMAT='JSON'
+) 
+AS
+SELECT
+    hex_ident,
+    LATEST_BY_OFFSET(ts_generated) AS ts,
+    LATEST_BY_OFFSET(flight_id) AS flight_id,
+    LATEST_BY_OFFSET(callsign) AS callsign,
+    LATEST_BY_OFFSET(altitude) AS altitude,
+    LATEST_BY_OFFSET(ground_speed) AS ground_speed,
+    LATEST_BY_OFFSET(track) AS track,
+    LATEST_BY_OFFSET(latitude) AS latitude,
+    LATEST_BY_OFFSET(longitude) AS longitude,
+    LATEST_BY_OFFSET(vertical_rate) AS vertical_rate
+FROM
+    adsb_keyed
+GROUP BY
+    hex_ident
+EMIT CHANGES;
+
+--
 -- Example 1:
 -- Count number of data points per 5 second tumbling window
 --
