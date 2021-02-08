@@ -14,15 +14,19 @@ ccloud ksql app list -o json | jq ".[].id" | xargs ccloud ksql app delete
 ```
 ## Create a KSQL app on the current cluster
 ```bash
-export CC_KSQLAPP=$(ccloud ksql app create my_app -o json | jq .id)
+export CC_KSQLAPP=$(ccloud ksql app create my_app -o json | jq .id | sed -e "s/\"//g")
 ```
 ## Check app status, looping until it is up (or failed)
 ```bash
 while
-    app_status=$(ccloud ksql app list -o json | jq ".[] | select(.id=${CC_KSQLAPP}) | .status")
+    app_status=$(ccloud ksql app list -o json | jq ".[] | select(.id=\"${CC_KSQLAPP}\") | .status")
     echo $app_status
     [[ $app_status =~ "PROVISIONING" ]]
 do
     sleep 5
 done
+```
+## Get API endpoint
+```bash
+ccloud ksql app describe ${CC_KSQLAPP} -o json 
 ```
