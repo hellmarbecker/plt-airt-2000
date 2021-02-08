@@ -16,7 +16,7 @@ ccloud ksql app list -o json | jq ".[].id" | xargs ccloud ksql app delete
 ```bash
 export CC_KSQLAPP=$(ccloud ksql app create my_app -o json | jq .id)
 ```
-# Check the status of app
+## Check app status, looping until it is up (or failed)
 ```bash
 while
     app_status=$(ccloud ksql app list -o json | jq ".[] | select(.id=${CC_KSQLAPP}) | .status")
