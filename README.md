@@ -83,6 +83,8 @@ Use Google Maps API?
 
 ## Kafka Client
 
+### C Client
+
 Pilfered from Confluent examples. This simply takes whatever it gets and writes it to a Kafka topic. No key is added at this stage. 
 
 Note that librdkafka has to be available on the Raspi (`sudo apt-get install librdkafka-dev`).
@@ -98,3 +100,10 @@ This was done on purpose - original idea was to parse the key already during dat
 nc localhost 30003 | perl -ne 'my @x=split /,/;print "$x[4]|$_"' | ./producer test-topic ~/.ccloud/example.config
 ```
 and have a producer client that splits key and value at the pipe character. However, it is more interesting to do that part in KSQL.
+
+### Using `kafkacat` as Kafka client
+
+The easiest way to get data into Kafka is probably by using `kafkacat`. The included shell script `send_kafka.sh` does the following:
+- Gets ADS-B data in CSV format by connecting to dump1090 on port 30003
+- Extracts the Hex code as key and prepends it to the record
+- Uses `kafkacat` to send data to Confluent Cloud
