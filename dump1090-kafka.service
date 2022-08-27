@@ -3,7 +3,7 @@ Description=connector
 
 [Service]
 User=pi
-ExecStart=/home/pi/plt-airt-2000/produce.sh /home/pi/plt-airt-2000/kcat.conf
+ExecStart=/home/pi/plt-airt-2000/send_kafka.sh
 RestartSec=30
 Restart=always
 
