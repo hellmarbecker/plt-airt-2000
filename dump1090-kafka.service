@@ -1,0 +1,11 @@
+[Unit]
+Description=connector
+
+[Service]
+User=pi
+ExecStart=/home/pi/plt-airt-2000/produce.sh /home/pi/plt-airt-2000/kcat.conf
+RestartSec=30
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
