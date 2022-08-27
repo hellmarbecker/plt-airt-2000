@@ -8,4 +8,4 @@ TOPIC_NAME="adsb-raw"
 
 nc localhost 30003 \
     | awk -F "," '{ print $5 "|" $0 }' \
-    | kafkacat -t ${TOPIC_NAME} -b ${CC_BOOTSTRAP} -K "|" ${CC_SECURE}
+    | kafkacat -P -t ${TOPIC_NAME} -b ${CC_BOOTSTRAP} -K "|" ${CC_SECURE}
