@@ -1,0 +1,17 @@
+SELECT
+  hex_ident,
+  LATEST_BY_OFFSET(date_message_generated) AS date_message_generated,
+  LATEST_BY_OFFSET(time_message_generated) AS time_message_generated,
+  LATEST_BY_OFFSET(date_message_logged) AS  date_message_logged,
+  LATEST_BY_OFFSET(time_message_logged) AS time_message_logged,
+  LATEST_BY_OFFSET(callsign) AS callsign,
+  LATEST_BY_OFFSET(altitude) AS altitude,
+  LATEST_BY_OFFSET(ground_speed) AS ground_speed,
+  LATEST_BY_OFFSET(track) AS track,
+  LATEST_BY_OFFSET(latitude) AS latitude,
+  LATEST_BY_OFFSET(longitude) AS longitude,
+  LATEST_BY_OFFSET(vertical_rate) AS vertical_rate
+FROM adsb_raw
+GROUP BY hex_ident
+EMIT CHANGES;
+ 
