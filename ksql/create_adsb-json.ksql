@@ -1,3 +1,5 @@
+DROP STREAM IF EXISTS `adsb-json`;
+
 CREATE STREAM `adsb-json` 
 WITH (
   KAFKA_TOPIC='adsb-json', 
@@ -8,7 +10,7 @@ WITH (
 SELECT 
   *,
   date_message_generated + ' ' + time_message_generated AS ts_generated,
-  date_message_logged + ' ' + time_message_logged AS ts_logged,
+  date_message_logged + ' ' + time_message_logged AS ts_logged
 FROM ADSB_RAW 
 PARTITION BY HEX_IDENT
 EMIT CHANGES;
