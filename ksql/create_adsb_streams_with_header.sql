@@ -25,7 +25,8 @@ CREATE OR REPLACE STREAM `adsb_raw_new` (
     `is_on_ground`            INTEGER,
     `client_id`               BYTES HEADER('ClientID'),
     `client_lon`              BYTES HEADER('ReceiverLon'),
-    `client_lat`              BYTES HEADER('ReceiverLat')
+    `client_lat`              BYTES HEADER('ReceiverLat'),
+    `headers`                 ARRAY<STRUCT<key STRING, value BYTES>> HEADERS
 )
 WITH (
     KAFKA_TOPIC='adsb-raw',
