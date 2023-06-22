@@ -20,7 +20,10 @@ CREATE OR REPLACE STREAM `adsb_raw_new` (
     `alert`                   INTEGER,
     `emergency`               INTEGER,
     `spi`                     INTEGER,
-    `is_on_ground`            INTEGER
+    `is_on_ground`            INTEGER,
+    `client_id`               BYTES HEADER('ClientID'),
+    `client_lon`              BYTES HEADER('ReceiverLon'),
+    `client_lat`              BYTES HEADER('ReceiverLat')
 )
 WITH (
     KAFKA_TOPIC='adsb-raw',
