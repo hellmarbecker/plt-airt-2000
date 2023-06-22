@@ -1,4 +1,4 @@
-CREATE STREAM `adsb_raw_new` (                            
+CREATE OR REPLACE STREAM `adsb_raw_new` (                            
     `message_type`            VARCHAR,
     `transmission_type`       INTEGER,
     `session_id`              INTEGER,
