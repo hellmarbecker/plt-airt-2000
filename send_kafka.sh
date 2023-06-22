@@ -12,7 +12,7 @@ TOPIC_NAME="adsb-raw"
 nc localhost 30003 \
     | awk -F "," '{ print $5 "|" $0 }' \
     | kafkacat -P \
-        -t ${TOPIC_NAME} \ 
+        -t ${TOPIC_NAME} \
         -b ${CC_BOOTSTRAP} \
         -H "ClientID=${CLIENT_ID}" \
         -H "ReceiverLon=${LON}" \
