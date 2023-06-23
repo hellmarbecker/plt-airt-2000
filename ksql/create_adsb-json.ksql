@@ -13,7 +13,7 @@ SELECT
   `session_id`,
   `aircraft_id`,
   `hex_ident`,
-  AS_VALUE(`hex_ident`),
+  AS_VALUE(`hex_ident`) AS `hex_ident_val`,
   `flight_id`,
   `date_message_generated`,
   `time_message_generated`,
