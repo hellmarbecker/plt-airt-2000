@@ -9,8 +9,8 @@ WITH (
 ) AS 
 SELECT 
   *,
-  REPLACE(date_message_generated, '/', '-') + 'T' + time_message_generated + 'Z' AS ts_generated,
-  REPLACE(date_message_logged, '/', '-') + 'T' + time_message_logged + 'Z' AS ts_logged
+  REPLACE(`date_message_generated`, '/', '-') + 'T' + `time_message_generated` + 'Z' AS `ts_generated`,
+  REPLACE(`date_message_logged`, '/', '-') + 'T' + `time_message_logged` + 'Z' AS `ts_logged`
 FROM `adsb-raw`
-PARTITION BY HEX_IDENT
+PARTITION BY `hex_ident`
 EMIT CHANGES;
