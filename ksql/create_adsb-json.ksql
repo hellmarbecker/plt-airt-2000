@@ -8,11 +8,11 @@ WITH (
   VALUE_FORMAT='JSON'
 ) AS 
 SELECT
-  `hex_ident`,
   `message_type`,
   `transmission_type`,
   `session_id`,
   `aircraft_id`,
+  `hex_ident`,
   AS_VALUE(`hex_ident`),
   `flight_id`,
   `date_message_generated`,
