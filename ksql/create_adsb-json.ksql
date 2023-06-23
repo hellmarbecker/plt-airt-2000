@@ -7,8 +7,33 @@ WITH (
   REPLICAS=3, 
   VALUE_FORMAT='JSON'
 ) AS 
-SELECT 
-  *,
+SELECT
+  `hex_ident`,
+  `message_type`,
+  `transmission_type`,
+  `session_id`,
+  `aircraft_id`,
+  AS_VALUE(`hex_ident`),
+  `flight_id`,
+  `date_message_generated`,
+  `time_message_generated`,
+  `date_message_logged`,
+  `time_message_logged`,
+  `callsign`,
+  `altitude`,
+  `ground_speed`,
+  `track`,
+  `latitude`,
+  `longitude`,
+  `vertical_rate`,
+  `squawk`,
+  `alert`,
+  `emergency`,
+  `spi`,
+  `is_on_ground`,
+  FROM_BYTES(`client_id`, 'utf8') AS `client_id`,
+  FROM_BYTES(`client_lon`, 'utf8') AS `client_lon`,
+  FROM_BYTES(`client_lat`, 'utf8') AS `client_lat`,
   REPLACE(`date_message_generated`, '/', '-') + 'T' + `time_message_generated` + 'Z' AS `ts_generated`,
   REPLACE(`date_message_logged`, '/', '-') + 'T' + `time_message_logged` + 'Z' AS `ts_logged`
 FROM `adsb-raw`
