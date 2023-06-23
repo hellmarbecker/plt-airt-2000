@@ -12,6 +12,13 @@ There are also a lot better antenna setups, but this one gives up to 200 km rang
 
 Data exchange via WiFi dongle.
 
+## NEW setup 2023
+
+You need only 2 files
+
+- send_kafka.sh, enter all your detail here, including Confluent Cloud credentials and your unique ID per receiver
+- dump1090-kafka.service, systemd definition file, update the path to send_kafka in this definition and then install to /etc/systemd/system, enable and start
+
 ## Raspi setup notes
 
 - For headless setup, check https://www.raspberrypi.org/forums/viewtopic.php?t=74176.
