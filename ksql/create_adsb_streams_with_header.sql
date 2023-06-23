@@ -1,6 +1,6 @@
-DROP STREAM `adsb_raw`;
+DROP STREAM `adsb-raw`;
 
-CREATE OR REPLACE STREAM `adsb_raw` (                            
+CREATE OR REPLACE STREAM `adsb-raw` (                            
     `message_type`            VARCHAR,
     `transmission_type`       INTEGER,
     `session_id`              INTEGER,
