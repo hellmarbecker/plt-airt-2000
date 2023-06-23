@@ -1,4 +1,4 @@
-DROP STREAM `adsb-raw`;
+DROP STREAM IF EXISTS `adsb-raw`;
 
 CREATE OR REPLACE STREAM `adsb-raw` (                            
     `message_type`            VARCHAR,
