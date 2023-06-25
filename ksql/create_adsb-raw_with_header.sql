@@ -24,6 +24,7 @@ CREATE OR REPLACE STREAM `adsb-raw` (
     `spi`                     INTEGER,
     `is_on_ground`            INTEGER,
     `client_id`               BYTES HEADER('ClientID'),
+    `client_timezone`         BYTES HEADER('ClientTimezone'),
     `client_lon`              BYTES HEADER('ReceiverLon'),
     `client_lat`              BYTES HEADER('ReceiverLat'),
     `headers`                 ARRAY<STRUCT<key STRING, value BYTES>> HEADERS
