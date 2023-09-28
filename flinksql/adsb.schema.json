@@ -8,6 +8,26 @@
   "properties": {
     "timestamp": { "type": "string" },
     "message_type": { "type": "string" },
-    "transmission_type": { "type": "integer" }
+    "transmission_type": { "type": "integer" },
+    "session_id": { "type": "integer" },
+    "aircraft_id": { "type": "integer" },
+    "hex_ident": { "type": "string" },
+    "flight_id": { "type": "integer" },
+    "date_message_generated": { "type": "string" },
+    "time_message_generated": { "type": "string" },
+    "date_message_logged": { "type": "string" },
+    "time_message_logged": { "type": "string" },
+    "callsign": { "type": "string" },
+    "altitude": { "type": "integer" },
+    "ground_speed": { "type": "number" },
+    "track": { "type": "number" },
+    "latitude": { "type": "number" },
+    "longitude": { "type": "number" },
+    "vertical_rate": { "type": "integer" },
+    "squawk": { "type": "string" },
+    "alert": { "type": "integer" },
+    "emergency": { "type": "integer" },
+    "spi": { "type": "integer" },
+    "is_on_ground": { "type": "integer" }
   }
 }
