@@ -1,0 +1,96 @@
+{
+  "type": "record",
+  "namespace": "com.mycorp.mynamespace",
+  "name": "adsbRecord",
+  "doc": "Sample schema to help you get started.",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "string"
+    },
+    {
+      "name": "transmission_type",
+      "type": "int"
+    },
+    {
+      "name": "session_id",
+      "type": "int"
+    },
+    {
+      "name": "aircraft_id",
+      "type": "int"
+    },
+    {
+      "name": "hex_ident",
+      "type": "string"
+    },
+    {
+      "name": "flight_id",
+      "type": "int"
+    },
+    {
+      "name": "date_message_generated",
+      "type": "string"
+    },
+    {
+      "name": "time_message_generated",
+      "type": "string"
+    },
+    {
+      "name": "date_message_logged",
+      "type": "string"
+    },
+    {
+      "name": "time_message_logged",
+      "type": "string"
+    },
+    {
+      "name": "callsign",
+      "type": "string"
+    },
+    {
+      "name": "altitude",
+      "type": "int"
+    },
+    {
+      "name": "ground_speed",
+      "type": "double"
+    },
+    {
+      "name": "track",
+      "type": "double"
+    },
+    {
+      "name": "latitude",
+      "type": "double"
+    },
+    {
+      "name": "longitude",
+      "type": "double"
+    },
+    {
+      "name": "vertical_rate",
+      "type": "double"
+    },
+    {
+      "name": "squawk",
+      "type": "string"
+    },
+    {
+      "name": "alert",
+      "type": "int"
+    },
+    {
+      "name": "emergency",
+      "type": "int"
+    },
+    {
+      "name": "spi",
+      "type": "int"
+    },
+    {
+      "name": "is_on_ground",
+      "type": "int"
+    }
+  ]
+}
