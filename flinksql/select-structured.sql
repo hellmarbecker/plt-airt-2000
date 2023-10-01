@@ -1,4 +1,29 @@
-insert into `adsb-json-sr`
+insert into `adsb-json-sr` (
+    key,
+    `timestamp`,
+    message_type,
+    transmission_type,
+    session_id,
+    aircraft_id,
+    hex_ident,
+    flight_id,
+    date_message_generated,
+    time_message_generated,
+    date_message_logged,
+    time_message_logged,
+    callsign,
+    altitude,
+    ground_speed,
+    track,
+    latitude,
+    longitude,
+    vertical_rate,
+    squawk,
+    alert,
+    emergency,
+    spi,
+    is_on_ground 
+)    
 with cte2 as (
     with cte as (
         select
