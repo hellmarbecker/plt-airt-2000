@@ -9,6 +9,10 @@
       "type": "string"
     },
     {
+      "name": "message_type",
+      "type": "int"
+    },
+    {
       "name": "transmission_type",
       "type": "int"
     },
