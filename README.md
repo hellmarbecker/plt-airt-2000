@@ -19,6 +19,20 @@ You need only 2 files
 - send_kafka.sh, enter all your detail here, including Confluent Cloud credentials and your unique ID per receiver
 - dump1090-kafka.service, systemd definition file, update the path to send_kafka in this definition and then install to /etc/systemd/system, enable and start
 
+### Setup instructions
+
+- On your Raspberry, set up the flight radar receiver, for instance from this repo https://github.com/MalcolmRobb/dump1090, or from https://www.flightradar24.com/
+- clone this repo to the raspberry: https://github.com/hellmarbecker/plt-airt-2000
+- in your home directory, (I assume /home/pi), create a copy of plt-airt-2000/raspberry/send_kafka.sh
+- edit this copy:
+  - overwrite the Confluent credentials with the correct ones (`CC_BOOTSTRAP`, `CC_APPIKEY`, `CC_SECRET`)
+  - enter a unique string for `CLIENT_ID` (you can just use your name)
+  - enter your own geo coordinates for `LON` and `LAT`
+- make sure the script is executable
+- copy file plt-airt-2000/raspberry/dump1090-kafka.service to /etc/systemd/system/
+- make sure the path in `ExecStart=/home/pi/plt-airt-2000/send_kafka.sh` points to your customized script
+- enable and start the service
+
 ## Raspi setup notes
 
 - For headless setup, check https://www.raspberrypi.org/forums/viewtopic.php?t=74176.
