@@ -10,7 +10,7 @@
     },
     {
       "name": "message_type",
-      "type": "int"
+      "type": [ "null", "int" ]
     },
     {
       "name": "transmission_type",
@@ -50,51 +50,51 @@
     },
     {
       "name": "callsign",
-      "type": "string"
+      "type": [ "null", "string" ]
     },
     {
       "name": "altitude",
-      "type": "int"
+      "type": [ "null", "int" ]
     },
     {
       "name": "ground_speed",
-      "type": "double"
+      "type": [ "null", "double" ]
     },
     {
       "name": "track",
-      "type": "double"
+      "type": [ "null", "double" ]
     },
     {
       "name": "latitude",
-      "type": "double"
+      "type": [ "null", "double" ]
     },
     {
       "name": "longitude",
-      "type": "double"
+      "type": [ "null", "double" ]
     },
     {
       "name": "vertical_rate",
-      "type": "double"
+      "type": [ "null", "double" ]
     },
     {
       "name": "squawk",
-      "type": "string"
+      "type": [ "null", "string" ]
     },
     {
       "name": "alert",
-      "type": "int"
+      "type": [ "null", "int" ]
     },
     {
       "name": "emergency",
-      "type": "int"
+      "type": [ "null", "int" ]
     },
     {
       "name": "spi",
-      "type": "int"
+      "type": [ "null", "int" ]
     },
     {
       "name": "is_on_ground",
-      "type": "int"
+      "type": [ "null", "int" ]
     }
   ]
 }
