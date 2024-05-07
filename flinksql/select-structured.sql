@@ -1,13 +1,39 @@
+insert into `adsb-avro` (
+    `key`,
+    `timestamp`,
+    message_type,
+    transmission_type,
+    session_id,
+    aircraft_id,
+    hex_ident,
+    flight_id,
+    date_message_generated,
+    time_message_generated,
+    date_message_logged,
+    time_message_logged,
+    callsign,
+    altitude,
+    ground_speed,
+    track,
+    latitude,
+    longitude,
+    vertical_rate,
+    squawk,
+    alert,
+    emergency,
+    spi,
+    is_on_ground,
+    `headers`
+) 
 with cte as (
     select
-        headers,
-        key,
+        `headers`,
+        `key`,
         decode(val, 'UTF-8') as strval
     from `adsb-raw`
 ) 
 select
-    headers,
-    key,
+    `key`,
     split_index(strval, ',',  6) || ' ' || split_index(strval, ',',  7) as `timestamp`,
     split_index(strval, ',',  0) as message_type,
     split_index(strval, ',',  1) as transmission_type,
@@ -30,5 +56,6 @@ select
     split_index(strval, ',', 18) as alert,
     split_index(strval, ',', 19) as emergency,
     split_index(strval, ',', 20) as spi,
-    split_index(strval, ',', 21) as is_on_ground 
+    split_index(strval, ',', 21) as is_on_ground,
+    `headers`
 from cte
