@@ -1,0 +1,128 @@
+{
+    "type": "kafka",
+    "spec": {
+      "ioConfig": {
+        "type": "kafka",
+        "consumerProperties": {
+          "bootstrap.servers": "pkc-4nym6.us-east-1.aws.confluent.cloud:9092",
+          "security.protocol": "SASL_SSL",
+          "sasl.mechanism": "PLAIN",
+          "sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule  required username=\"\" password=\"\";"
+        },
+        "topic": "adsb-json",
+        "inputFormat": {
+          "type": "kafka",
+          "headerFormat": {
+            "type": "string"
+          },
+          "keyFormat": {
+            "type": "regex",
+            "pattern": "([\\s\\S]*)",
+            "columns": [
+              "line"
+            ]
+          },
+          "valueFormat": {
+            "type": "json"
+          }
+        },
+        "useEarliestOffset": true,
+        "taskDuration": "PT30M"
+      },
+      "tuningConfig": {
+        "type": "kafka",
+        "intermediateHandoffPeriod": "PT5M"
+      },
+      "dataSchema": {
+        "dataSource": "flight-data",
+        "timestampSpec": {
+          "column": "kafka.timestamp",
+          "format": "millis"
+        },
+        "dimensionsSpec": {
+          "dimensions": [
+            "kafka.header.ReceiverLat",
+            "date_message_logged",
+            {
+              "type": "long",
+              "name": "altitude"
+            },
+            "time_message_generated",
+            {
+              "name": "latitude",
+              "type": "float"
+            },
+            "hex_ident_val",
+            {
+              "type": "long",
+              "name": "emergency"
+            },
+            {
+              "type": "long",
+              "name": "ground_speed"
+            },
+            "kafka.header.ClientTimezone",
+            {
+              "type": "long",
+              "name": "transmission_type"
+            },
+            "client_id",
+            {
+              "type": "long",
+              "name": "aircraft_id"
+            },
+            "client_lat",
+            "squawk",
+            "kafka.header.ReceiverLon",
+            {
+              "type": "long",
+              "name": "alert"
+            },
+            "time_message_logged",
+            "callsign",
+            "ts_generated",
+            {
+              "type": "double",
+              "name": "track"
+            },
+            {
+              "name": "longitude",
+              "type": "float"
+            },
+            "kafka.header.ClientID",
+            {
+              "type": "long",
+              "name": "is_on_ground"
+            },
+            {
+              "type": "long",
+              "name": "session_id"
+            },
+            "message_type",
+            "date_message_generated",
+            {
+              "type": "long",
+              "name": "spi"
+            },
+            "client_lon",
+            {
+              "type": "long",
+              "name": "flight_id"
+            },
+            "ts_logged",
+            "kafka.topic",
+            "kafka.key",
+            {
+              "type": "long",
+              "name": "vertical_rate"
+            }
+          ]
+        },
+        "granularitySpec": {
+          "queryGranularity": "none",
+          "rollup": false,
+          "segmentGranularity": "day"
+        }
+      }
+    }
+  }
