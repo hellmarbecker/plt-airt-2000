@@ -40,7 +40,7 @@ druid_metadata_storage_connector_password=FoolishPassword
 druid_coordinator_balancer_strategy=cachingCost
 
 druid_worker_capacity=2
-druid_indexer_runner_javaOptsArray=["-server","-Duser.timezone=UTC","-Dfile.encoding=UTF-8","-XX:+ExitOnOutOfMemoryError","-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager","-Xms383m","-Xmx383m","-XX:MaxDirectMemorySize=383m"]
+druid_indexer_runner_javaOptsArray=["-server","-Duser.timezone=UTC","-Dfile.encoding=UTF-8","-XX:+ExitOnOutOfMemoryError","-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager","-Xms512m","-Xmx512m","-XX:MaxDirectMemorySize=512m"]
 druid_indexer_fork_property_druid_processing_buffer_sizeBytes=64MiB
 
 druid_manager_lookups_period=10000 # accelerate lookup load operations
@@ -65,9 +65,6 @@ druid_msq_intermediate_storage_cleaner_enabled=true
 
 # setup export location so that local exports can be used
 druid_export_storage_baseDir=/opt/shared/exports
-
-
-
 
 DRUID_LOG4J=<?xml version="1.0" encoding="UTF-8" ?><Configuration status="WARN"><Appenders><Console name="Console" target="SYSTEM_OUT"><PatternLayout pattern="%d{ISO8601} %p [%t] %c - %m%n"/></Console></Appenders><Loggers><Root level="info"><AppenderRef ref="Console"/></Root><Logger name="org.apache.druid.jetty.RequestLog" additivity="false" level="DEBUG"><AppenderRef ref="Console"/></Logger></Loggers></Configuration>
 

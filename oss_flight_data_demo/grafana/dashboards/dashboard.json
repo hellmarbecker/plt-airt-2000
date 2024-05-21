@@ -199,14 +199,14 @@
               ],
               "type": "intervals"
             },
-            "query": "SELECT \"aircraft_id\", \nAVG(\"latitude\") as \"latitude\",\nAVG(\"longitude\") as \"longitude\",\nAVG(\"altitude\") as \"altitude\"\nFROM \"flight-data\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"latitude\" IS NOT NULL AND \"longitude\" IS NOT NULL AND \"altitude\" IS NOT NULL\nGROUP BY 1\n",
+            "query": "SELECT \"aircraft_id\", \nAVG(\"latitude\") as \"latitude\",\nAVG(\"longitude\") as \"longitude\",\nAVG(\"altitude\") as \"altitude\"\nFROM \"adsb-json\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"latitude\" IS NOT NULL AND \"longitude\" IS NOT NULL AND \"altitude\" IS NOT NULL\nGROUP BY 1\n",
             "queryType": "sql"
           },
           "datasource": {
             "type": "grafadruid-druid-datasource",
             "uid": "ddlpoexpk0e80b"
           },
-          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"aircraft_id\\\", \\nAVG(\\\"latitude\\\") as \\\"latitude\\\",\\nAVG(\\\"longitude\\\") as \\\"longitude\\\",\\nAVG(\\\"altitude\\\") as \\\"altitude\\\"\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"latitude\\\" IS NOT NULL AND \\\"longitude\\\" IS NOT NULL AND \\\"altitude\\\" IS NOT NULL\\nGROUP BY 1\\n\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"aircraft_id\\\", \\nAVG(\\\"latitude\\\") as \\\"latitude\\\",\\nAVG(\\\"longitude\\\") as \\\"longitude\\\",\\nAVG(\\\"altitude\\\") as \\\"altitude\\\"\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"latitude\\\" IS NOT NULL AND \\\"longitude\\\" IS NOT NULL AND \\\"altitude\\\" IS NOT NULL\\nGROUP BY 1\\n\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
           "refId": "Aircraft",
           "settings": {}
         },
@@ -218,14 +218,14 @@
               ],
               "type": "intervals"
             },
-            "query": "SELECT \"client_id\", \nAVG(\"client_lat\") as \"latitude\",\nAVG(\"client_lon\") as \"longitude\"\nFROM \"flight-data\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"latitude\" IS NOT NULL AND \"longitude\" IS NOT NULL\nGROUP BY 1\n",
+            "query": "SELECT \"client_id\", \nAVG(\"client_lat\") as \"latitude\",\nAVG(\"client_lon\") as \"longitude\"\nFROM \"adsb-json\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"latitude\" IS NOT NULL AND \"longitude\" IS NOT NULL\nGROUP BY 1\n",
             "queryType": "sql"
           },
           "datasource": {
             "type": "grafadruid-druid-datasource",
             "uid": "ddlpoexpk0e80b"
           },
-          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"client_id\\\", \\nAVG(\\\"client_lat\\\") as \\\"latitude\\\",\\nAVG(\\\"client_lon\\\") as \\\"longitude\\\"\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"latitude\\\" IS NOT NULL AND \\\"longitude\\\" IS NOT NULL\\nGROUP BY 1\\n\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"client_id\\\", \\nAVG(\\\"client_lat\\\") as \\\"latitude\\\",\\nAVG(\\\"client_lon\\\") as \\\"longitude\\\"\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"latitude\\\" IS NOT NULL AND \\\"longitude\\\" IS NOT NULL\\nGROUP BY 1\\n\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
           "hide": false,
           "refId": "Receivers",
           "settings": {}
@@ -408,14 +408,14 @@
               ],
               "type": "intervals"
             },
-            "query": "SELECT *\nFROM \"flight-data\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"aircraft_id\"=${Aircraft_ID} AND \"latitude\" IS NOT NULL\nAND \"longitude\" IS NOT NULL\nAND \"altitude\" IS NOT NULL",
+            "query": "SELECT *\nFROM \"adsb-json\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"aircraft_id\"=${Aircraft_ID} AND \"latitude\" IS NOT NULL\nAND \"longitude\" IS NOT NULL\nAND \"altitude\" IS NOT NULL",
             "queryType": "sql"
           },
           "datasource": {
             "type": "grafadruid-druid-datasource",
             "uid": "ddlpoexpk0e80b"
           },
-          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT *\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"aircraft_id\\\"=${Aircraft_ID} AND \\\"latitude\\\" IS NOT NULL\\nAND \\\"longitude\\\" IS NOT NULL\\nAND \\\"altitude\\\" IS NOT NULL\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT *\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"aircraft_id\\\"=${Aircraft_ID} AND \\\"latitude\\\" IS NOT NULL\\nAND \\\"longitude\\\" IS NOT NULL\\nAND \\\"altitude\\\" IS NOT NULL\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
           "hide": false,
           "refId": "Aircraft",
           "settings": {}
@@ -428,14 +428,14 @@
               ],
               "type": "intervals"
             },
-            "query": "SELECT \"client_id\", \nAVG(\"client_lat\") as \"latitude\",\nAVG(\"client_lon\") as \"longitude\"\nFROM \"flight-data\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"latitude\" IS NOT NULL AND \"longitude\" IS NOT NULL\nGROUP BY 1\n",
+            "query": "SELECT \"client_id\", \nAVG(\"client_lat\") as \"latitude\",\nAVG(\"client_lon\") as \"longitude\"\nFROM \"adsb-json\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \"latitude\" IS NOT NULL AND \"longitude\" IS NOT NULL\nGROUP BY 1\n",
             "queryType": "sql"
           },
           "datasource": {
             "type": "grafadruid-druid-datasource",
             "uid": "ddlpoexpk0e80b"
           },
-          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"client_id\\\", \\nAVG(\\\"client_lat\\\") as \\\"latitude\\\",\\nAVG(\\\"client_lon\\\") as \\\"longitude\\\"\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"latitude\\\" IS NOT NULL AND \\\"longitude\\\" IS NOT NULL\\nGROUP BY 1\\n\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"client_id\\\", \\nAVG(\\\"client_lat\\\") as \\\"latitude\\\",\\nAVG(\\\"client_lon\\\") as \\\"longitude\\\"\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to}) AND \\\"latitude\\\" IS NOT NULL AND \\\"longitude\\\" IS NOT NULL\\nGROUP BY 1\\n\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
           "hide": false,
           "refId": "Receivers",
           "settings": {}
@@ -504,14 +504,14 @@
               ],
               "type": "intervals"
             },
-            "query": "SELECT\n  \"client_id\" AS \"receiver\",\n  COUNT (DISTINCT \"aircraft_id\") AS \"aircraft tracked\"\nFROM \"flight-data\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to})\nGROUP BY 1\nORDER BY 2 DESC",
+            "query": "SELECT\n  \"client_id\" AS \"receiver\",\n  COUNT (DISTINCT \"aircraft_id\") AS \"aircraft tracked\"\nFROM \"adsb-json\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to})\nGROUP BY 1\nORDER BY 2 DESC",
             "queryType": "sql"
           },
           "datasource": {
             "type": "grafadruid-druid-datasource",
             "uid": "ddlpoexpk0e80b"
           },
-          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT\\n  \\\"client_id\\\" AS \\\"receiver\\\",\\n  COUNT (DISTINCT \\\"aircraft_id\\\") AS \\\"aircraft tracked\\\"\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to})\\nGROUP BY 1\\nORDER BY 2 DESC\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT\\n  \\\"client_id\\\" AS \\\"receiver\\\",\\n  COUNT (DISTINCT \\\"aircraft_id\\\") AS \\\"aircraft tracked\\\"\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to})\\nGROUP BY 1\\nORDER BY 2 DESC\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
           "refId": "A",
           "settings": {}
         }
@@ -534,7 +534,7 @@
           "type": "grafadruid-druid-datasource",
           "uid": "ddlpoexpk0e80b"
         },
-        "definition": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"aircraft_id\\\"\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to})\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+        "definition": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"aircraft_id\\\"\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to})\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -548,10 +548,10 @@
               ],
               "type": "intervals"
             },
-            "query": "SELECT \"aircraft_id\"\nFROM \"flight-data\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to})",
+            "query": "SELECT \"aircraft_id\"\nFROM \"adsb-json\"\nWHERE \"__time\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \"__time\" <= MILLIS_TO_TIMESTAMP(${__to})",
             "queryType": "sql"
           },
-          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"aircraft_id\\\"\\nFROM \\\"flight-data\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to})\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
+          "expr": "{\"builder\":{\"queryType\":\"sql\",\"query\":\"SELECT \\\"aircraft_id\\\"\\nFROM \\\"adsb-json\\\"\\nWHERE \\\"__time\\\" >= MILLIS_TO_TIMESTAMP(${__from}) AND \\\"__time\\\" <= MILLIS_TO_TIMESTAMP(${__to})\",\"intervals\":{\"type\":\"intervals\",\"intervals\":[\"${__from:date:iso}/${__to:date:iso}\"]}},\"settings\":{}}",
           "settings": {}
         },
         "refresh": 1,

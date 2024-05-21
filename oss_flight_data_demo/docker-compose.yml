@@ -167,7 +167,6 @@ services:
     env_file:
       - environment
     image: grafana/grafana:${GRAFANA_VERSION:-10.4.3}
-    # Made these non shared, if you have issues try renabling that 
     volumes:
       - grafana_storage:/var/lib/grafana
       - ./grafana/dashboards:/etc/grafana/dashboards
