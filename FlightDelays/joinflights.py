@@ -10,8 +10,19 @@ def slurp(fn):
         return { row[reader.fieldnames[0]]:row for row in reader }
 
 def main():
-    print(json.dumps(slurp('airlines.csv')))
-    print(json.dumps(slurp('airports.csv')))
+
+    airlines = slurp('airlines.csv')
+    airports = slurp('airports.csv')
+
+    with open(BASEPATH + 'flights.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        it = iter(reader)
+        for i in range(10):
+            row = next(it)
+            row['AIRLINE'] = airlines[row['AIRLINE']]
+            row['ORIGIN_AIRPORT'] = airports[row['ORIGIN_AIRPORT']]
+            row['DESTINATION_AIRPORT'] = airports[row['DESTINATION_AIRPORT']]
+            print(json.dumps(row))
 
 if __name__ == "__main__":
     main()
