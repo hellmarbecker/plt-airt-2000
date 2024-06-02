@@ -16,9 +16,7 @@ def main():
 
     with open(BASEPATH + 'flights.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-        it = iter(reader)
-        for i in range(10):
-            row = next(it)
+        for row in reader:
             row['AIRLINE'] = airlines[row['AIRLINE']]
             row['ORIGIN_AIRPORT'] = airports[row['ORIGIN_AIRPORT']]
             row['DESTINATION_AIRPORT'] = airports[row['DESTINATION_AIRPORT']]
