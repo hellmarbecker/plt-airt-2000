@@ -1,0 +1,12 @@
+[Unit]
+Description=connector
+
+[Service]
+User=admin
+ExecStart=/home/admin/send_kafka.sh
+RestartSec=30
+Restart=always
+RuntimeMaxSec=5m
+
+[Install]
+WantedBy=multi-user.target
