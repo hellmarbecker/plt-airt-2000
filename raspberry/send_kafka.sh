@@ -6,8 +6,8 @@ CC_SECRET="<secret>"
 CC_SECURE="-X security.protocol=SASL_SSL -X sasl.mechanism=PLAIN -X sasl.username=${CC_APIKEY} -X sasl.password=${CC_SECRET}"
 CLIENT_ID="<client id>"
 CLIENT_TIMEZONE=$(date +"%Z")
-LON="0.0"
 LAT="0.0"
+LON="0.0"
 TOPIC_NAME="adsb-raw"
 
 nc localhost 30003 \
