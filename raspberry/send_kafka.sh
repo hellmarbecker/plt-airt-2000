@@ -8,6 +8,7 @@ CLIENT_ID="<client id>"
 CLIENT_TIMEZONE=$(date +"%Z")
 LAT="0.0"
 LON="0.0"
+ALT="0"
 TOPIC_NAME="adsb-raw"
 
 nc localhost 30003 \
@@ -19,5 +20,6 @@ nc localhost 30003 \
         -H "ClientTimezone=${CLIENT_TIMEZONE}" \
         -H "ReceiverLon=${LON}" \
         -H "ReceiverLat=${LAT}" \
+        -H "ReceiverAlt=${ALT}" \
         -K "|" \
         ${CC_SECURE}

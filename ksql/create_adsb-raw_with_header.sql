@@ -27,6 +27,7 @@ CREATE OR REPLACE STREAM `adsb-raw` (
     `client_timezone`         BYTES HEADER('ClientTimezone'),
     `client_lon`              BYTES HEADER('ReceiverLon'),
     `client_lat`              BYTES HEADER('ReceiverLat'),
+    `client_alt`              BYTES HEADER('ReceiverAlt'),
     `headers`                 ARRAY<STRUCT<key STRING, value BYTES>> HEADERS
 )
 WITH (
