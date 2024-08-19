@@ -34,6 +34,7 @@ SELECT
   FROM_BYTES(`client_id`, 'utf8') AS `client_id`,
   FROM_BYTES(`client_lon`, 'utf8') AS `client_lon`,
   FROM_BYTES(`client_lat`, 'utf8') AS `client_lat`,
+  FROM_BYTES(`client_alt`, 'utf8') AS `client_alt`,
   REPLACE(`date_message_generated`, '/', '-') + 'T' + `time_message_generated` + 'Z' AS `ts_generated`,
   REPLACE(`date_message_logged`, '/', '-') + 'T' + `time_message_logged` + 'Z' AS `ts_logged`
 FROM `adsb-raw`
